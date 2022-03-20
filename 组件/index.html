@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@3.2.31/dist/vue.global.prod.js"></script>
+	</head>
+	<body>
+		<div id="app"></div>
+		<script>
+			const app = Vue.createApp({
+				data() {
+					return {
+						name: '根组件-父亲',
+					}
+				},
+				template: `<div>{{ name }} <xj/></div>`,
+			})
+
+			app.component('xj', {
+				data() {
+					return {
+						name: '这是子组件',
+					}
+				},
+				template: `<span style="color:red">{{ name }}</span>`,
+			})
+
+			const vm = app.mount('#app')
+			console.log(vm.name)
+		</script>
+	</body>
+</html>
