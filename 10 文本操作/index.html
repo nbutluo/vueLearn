@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@3.2.31/dist/vue.global.prod.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h3 v-text="name"></h3>
+			<div v-html="html"></div>
+		</div>
+		<script>
+			const app = Vue.createApp({
+				data() {
+					return {
+						name: '后盾人',
+						html: `<h3 style="color:red">hahaha</h3>`,
+					}
+				},
+			})
+
+			const vm = app.mount('#app')
+
+			setTimeout(() => {
+				vm.$data.name = '湘军大叔'
+			}, 3000)
+			// console.log(vm.$data.name)
+		</script>
+	</body>
+</html>
