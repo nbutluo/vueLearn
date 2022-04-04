@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@3.2.31/dist/vue.global.prod.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- <h3 :id="id">{{name}}</h3> -->
+			<!-- <div v-show="is_show">{{name}}</div> -->
+			<!-- {{ n==1 ? name : '向军1' }} -->
+			<!-- <h3 v-once>{{name}}</h3> -->
+			<!-- <div :[arg]="id">{{name}}</div> -->
+			<a :[arg]="value">{{name}}</a>
+		</div>
+		<script>
+			const app = Vue.createApp({
+				data() {
+					return {
+						name: '后盾人',
+						id: 'hd',
+						is_show: true,
+						n: 1,
+						arg: 'id',
+						value: 'houdunren',
+					}
+				},
+			})
+
+			const vm = app.mount('#app')
+
+			setTimeout(() => {
+				vm.name = '向军'
+				vm.arg = 'href'
+				vm.value = 'http://www.baidu.com'
+			}, 2000)
+		</script>
+	</body>
+</html>

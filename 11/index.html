@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@3.2.31/dist/vue.global.prod.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- <h3 v-bind:id="id">{{name}}</h3>
+			{{ n==1 ? '后盾人' : '湘军'}}
+			<h4 v-show="true">{{name}}</h4>
+			<h3 v-once>{{name}}</h3> -->
+			<a :[arg]="value">{{name}}</a>
+		</div>
+		<script>
+			const app = Vue.createApp({
+				data() {
+					return {
+						name: '后盾人',
+						id: 'yahoo',
+						n: 1,
+						value: 'hahah',
+						arg: 'id',
+					}
+				},
+			})
+
+			const vm = app.mount('#app')
+
+			setTimeout(() => {
+				// vm.name = '向军'
+				vm.arg = 'href'
+				vm.value = 'https://www.baidu.com'
+			}, 2000)
+		</script>
+	</body>
+</html>
