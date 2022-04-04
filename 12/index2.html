@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@3.2.31/dist/vue.global.prod.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- <button @click="add">{{name}}</button> -->
+			<!-- <button @[arg]="add">{{name}}</button> -->
+			<!-- <a href="http://www.baidu.com" @click="go">{{name}}</a> -->
+			<!-- <a href="http://www.baidu.com" @click.prevent="go">{{name}}</a> -->
+			<!-- <a href="http://www.baidu.com" @click.prevent="up($event,'houdunren')"
+				>{{name}}</a
+			> -->
+			<button @click="desc">减少</button>
+			{{num}}
+			<button @click="add">增加</button>
+			<span style="color: aliceblue; background-color: red" v-show="error"
+				>提示：{{error}}</span
+			>
+		</div>
+		<script>
+			const app = Vue.createApp({
+				data() {
+					return {
+						name: '后盾人',
+						arg: 'mouseenter',
+						num: 0,
+						error: '',
+					}
+				},
+				methods: {
+					add() {
+						this.error = ''
+						if (this.num < 10) {
+							this.num += 1
+						} else {
+							this.error = '不能大于10'
+						}
+					},
+
+					desc() {
+						this.error = ''
+						if (this.num > 0) {
+							this.num -= 1
+						} else {
+							this.error = '不能小于0'
+						}
+					},
+
+					go(event) {
+						event.preventDefault()
+					},
+
+					up(event, title) {
+						alert(title)
+					},
+				},
+			})
+
+			const vm = app.mount('#app')
+		</script>
+	</body>
+</html>
